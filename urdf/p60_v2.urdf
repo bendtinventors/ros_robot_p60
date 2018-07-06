@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<robot name="robot_P60_v2">
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.5 0.5 0.25"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+  <!-- Base collision -->
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <geometry>
+      <box size="0.5 0.5 0.25"/>
+    </geometry>
+  </collision>
+  <!-- Front Wheel Steer-->
+  <link name="front_wheel_steer">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.2" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="joint_front_wheel_steer" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_wheel_steer"/>
+    <origin xyz="0.30 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+  <!-- Front Wheel -->
+  <link name="front_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.2" />
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="joint_front_wheel" type="continuous">
+    <parent link="front_wheel_steer"/>
+    <child link="front_wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <!-- Front Wheel collision -->
+  <collision>
+    <origin xyz="0 0 0" rpy="1.570795 0 0" />
+    <geometry>
+      <cylinder length="0.1" radius="0.2" />
+    </geometry>
+  </collision>
+  <!-- Back Wheel Steer-->
+  <link name="back_wheel_steer">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.2" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="joint_back_wheel_steer" type="revolute">
+    <parent link="base_link"/>
+    <child link="back_wheel_steer"/>
+    <origin xyz="-0.30 0 0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <mimic joint="joint_front_wheel_steer"
+           multiplier="-1"
+           offset="0"/>
+  </joint>
+  <!-- Back Wheel -->
+  <link name="back_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.2" />
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="joint_back_wheel" type="continuous">
+    <parent link="base_wheel_steer"/>
+    <child link="back_wheel"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <!-- Back Wheel collision -->
+  <collision>
+    <origin xyz="0 0 0" rpy="1.570795 0 0" />
+    <geometry>
+      <cylinder length="0.1" radius="0.2" />
+    </geometry>
+  </collision>
+  <!-- Right Wheel -->
+  <link name="right_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.2" />
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="joint_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin xyz="0 -0.30 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <!-- Right Wheel collision -->
+  <collision>
+    <origin xyz="0 0 0" rpy="1.570795 0 0" />
+    <geometry>
+      <cylinder length="0.1" radius="0.2" />
+    </geometry>
+  </collision>
+  <!-- Left Wheel -->
+  <link name="left_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.570795 0 0" />
+      <geometry>
+        <cylinder length="0.1" radius="0.2" />
+      </geometry>
+      <material name="blue"/>
+    </visual>
+  </link>
+  <joint name="joint_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="0 0.30 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+  </joint>
+  <!-- Left Wheel collision -->
+  <collision>
+    <origin xyz="0 0 0" rpy="1.570795 0 0" />
+    <geometry>
+      <cylinder length="0.1" radius="0.2" />
+    </geometry>
+  </collision>
+</robot>
