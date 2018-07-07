@@ -27,7 +27,10 @@
         <box size="0.5 0.5 0.25"/>
       </geometry>
     </collision>
-
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="0.13" ixy="0.0" ixz="0.0" iyy="0.21" iyz="0.0" izz="0.13"/>
+    </inertial>
   </link>
 
   <!-- Right Wheel -->
@@ -46,6 +49,10 @@
         <cylinder length="0.1" radius="0.2" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+    </inertial>
    </link>
     <!-- Right Wheel joint -->
     <joint name="joint_right_wheel" type="continuous">
@@ -71,6 +78,10 @@
         <cylinder length="0.1" radius="0.2" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+    </inertial>
   </link>
   <!-- Left Wheel joint -->
   <joint name="joint_left_wheel" type="continuous">
@@ -88,6 +99,10 @@
         <cylinder length="0.1" radius="0.2" />
       </geometry>
     </visual>
+   <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005"/>
+    </inertial>
   </link>
   <!-- Front Wheel Steer joint -->
   <joint name="joint_front_wheel_steer" type="revolute">
@@ -113,6 +128,10 @@
         <cylinder length="0.1" radius="0.2" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+    </inertial>
   </link>
   <joint name="joint_front_wheel" type="continuous">
     <parent link="front_wheel_steer"/>
@@ -129,6 +148,10 @@
         <cylinder length="0.1" radius="0.2" />
       </geometry>
     </visual>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.0005" iyz="0.0" izz="0.0005"/>
+    </inertial>
   </link>
   <joint name="joint_back_wheel_steer" type="revolute">
     <parent link="base_link"/>
@@ -156,6 +179,10 @@
         <cylinder length="0.1" radius="0.2" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+    </inertial>
   </link>
   <joint name="joint_back_wheel" type="continuous">
     <parent link="back_wheel_steer"/>
@@ -166,4 +193,20 @@
            multiplier="1"
            offset="0"/>
   </joint>
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+    <pose>0 0 3 0 0 0</pose>
+  </gazebo>
+  <gazebo reference="right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="front_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+  <gazebo reference="back_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
 </robot>
